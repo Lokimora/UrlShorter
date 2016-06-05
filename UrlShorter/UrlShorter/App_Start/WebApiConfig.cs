@@ -5,6 +5,7 @@ using System.Net.Http;
 using System.Web.Http;
 using Microsoft.Owin.Security.OAuth;
 using Newtonsoft.Json.Serialization;
+using System.Net.Http.Formatting;
 
 namespace UrlShorter
 {
@@ -12,18 +13,13 @@ namespace UrlShorter
     {
         public static void Register(HttpConfiguration config)
         {
-            // Web API configuration and services
-            // Configure Web API to use only bearer token authentication.
-
-            config.Filters.Add(new HostAuthenticationFilter(OAuthDefaults.AuthenticationType));
-
-            // Web API routes
-            config.MapHttpAttributeRoutes();
+            var xmlFormatter = config.Formatters.XmlFormatter;
+            config.Formatters.Remove(xmlFormatter);
 
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",
-                routeTemplate: "api/{controller}/{id}",
-                defaults: new { id = RouteParameter.Optional }
+                routeTemplate: "{controller}/{action}/{id}",
+                defaults: new { controller = "home", action = "get", id = RouteParameter.Optional}
             );
         }
     }
