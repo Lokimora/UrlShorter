@@ -16,6 +16,13 @@ namespace UrlShorter
             var xmlFormatter = config.Formatters.XmlFormatter;
             config.Formatters.Remove(xmlFormatter);
 
+
+            config.Routes.MapHttpRoute(
+                name: "redirect",
+                routeTemplate: "{id}",
+                defaults: new { controller = "reducer", action = "redirect" }
+            );
+
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",
                 routeTemplate: "{controller}/{action}/{id}",

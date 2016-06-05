@@ -10,7 +10,7 @@ namespace UrlShorter.Models.DB
     {
         public SqlExpContext() : base("SQLDB")
         {
-
+            Database.SetInitializer<SqlExpContext>(new DropCreateDatabaseIfModelChanges<SqlExpContext>());
         }
 
         public DbSet<Reduction> UrlReduct { get; set; }

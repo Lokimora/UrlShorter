@@ -39,6 +39,32 @@ namespace UrlShorter.Controllers
         {
             return _reducerRepository.GetAll();
         }
+
+        [HttpGet]
+        public IHttpActionResult Redirect()
+        {
+            object shortUrObj;
+
+
+            if(RequestContext.RouteData.Values.TryGetValue("id", out shortUrObj))
+            {
+                var shortRelUrl = shortUrObj.ToString();
+
+                var entry = _reducerRepository.FindFirstOrDefault(p => p.ShortRelUrl == shortRelUrl);
+
+                if(entry != null)
+                {
+                    entry.PassageCount++;
+                    _reducerRepository.Update(entry);
+                }
+
+                return Redirect(entry.OriginalUrl);
+            }
+
+            return NotFound();
+
+            
+        }
        
     }
 }
