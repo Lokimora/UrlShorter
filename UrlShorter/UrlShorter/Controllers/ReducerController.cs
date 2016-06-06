@@ -5,6 +5,8 @@ using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
+using System.Web.Http.Cors;
+using UrlShorter.Models;
 using UrlShorter.Models.DB;
 using UrlShorter.Repository;
 
@@ -21,13 +23,13 @@ namespace UrlShorter.Controllers
         }
 
         [HttpPost]
-        public IHttpActionResult Create(string url)
+        public IHttpActionResult Create(UrlView url)
         {
             Uri uriResult;
-            if( Uri.TryCreate(url, UriKind.Absolute, out uriResult)
+            if( Uri.TryCreate(url.OriginalUrl, UriKind.Absolute, out uriResult)
                 && (uriResult.Scheme == Uri.UriSchemeHttp || uriResult.Scheme == Uri.UriSchemeHttps))
             {
-                return Ok(_reducerRepository.Create(url));
+                return Ok(_reducerRepository.Create(url.OriginalUrl));
             }
 
             return BadRequest("url is invalid");                     

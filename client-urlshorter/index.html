@@ -1,11 +1,28 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Mainp page</title>
+	 <title>Main page</title>
 	 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+	 <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.5/angular-route.min.js"></script>
+	 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
+
+
 </head>
-<body ng-app=>
-	<input type="text" ng-model="lok">
-	Hello <p ng-bind="lok">
+<body ng-app="app">
+
+<div ng-controller="reduce-controller">
+
+	
+	<input type="text" ng-model="originalUrl">
+	<input type="submit" value="Reduce Url" ng-click="reduceUrl()">
+
+	
+
+</div>
+	 <script src="app.js"></script>
+	 <script src="app.controllers.js"></script>
+
+
 </body>
 </html>

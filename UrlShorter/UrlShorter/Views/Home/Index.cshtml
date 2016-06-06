@@ -1,0 +1,27 @@
+﻿
+@{
+    Layout = "~/Views/_Layout.cshtml";
+}
+
+<div class="reduce-container" ng-controller="reduce-controller">
+    <div class="input-group">
+        <input type="text" class="form-control" placeholder="Скопируйте сюда ссылку" ng-model="originalUrl" />
+        <span class="input-group-btn">
+            <buton class="btn btn-success" type="button" ng-click="reduceUrl()">Сделать это!</buton>
+        </span>
+    </div>
+    </br>
+
+    <div class="input-group">
+        <input class="form-control" onclick="this.select();" value="{{message}}" readonly />
+        <span class="input-group-btn">
+            <button class="btn" type="button"><a href="/home/urllist">Click me</a></button>
+        </span>
+    </div>
+
+
+</div>
+
+
+
+

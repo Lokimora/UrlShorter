@@ -1,0 +1,31 @@
+﻿
+@{
+    ViewBag.Title = "UrlList";
+    Layout = "~/Views/_Layout.cshtml";
+}
+
+<div ng-controller="urlList-controller">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Оригинальная ссылка ссылка</th>
+                <th>Сокращенная ссылка</th>
+                <th>Количество переходов</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr class="table-info" ng-model="links" ng-repeat="x in links">
+                <td>{{$index + 1}}</td>
+                <td>{{x.OriginalUrl}}</td>
+                <td>{{x.ShortRelUrl}}</td>
+                <td>{{x.PassageCount}}</td>
+            </tr>
+        </tbody>
+
+  
+    </table>
+</div>
+
+

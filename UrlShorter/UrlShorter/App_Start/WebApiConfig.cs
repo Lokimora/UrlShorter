@@ -13,8 +13,8 @@ namespace UrlShorter
     {
         public static void Register(HttpConfiguration config)
         {
-            var xmlFormatter = config.Formatters.XmlFormatter;
-            config.Formatters.Remove(xmlFormatter);
+            //var xmlFormatter = config.Formatters.XmlFormatter;
+            //config.Formatters.Remove(xmlFormatter);
 
 
             config.Routes.MapHttpRoute(
@@ -24,9 +24,9 @@ namespace UrlShorter
             );
 
             config.Routes.MapHttpRoute(
-                name: "DefaultApi",
-                routeTemplate: "{controller}/{action}/{id}",
-                defaults: new { controller = "home", action = "get", id = RouteParameter.Optional}
+                name: "reducer",
+                routeTemplate: "reducer/{action}/{id}",
+                defaults: new { controller = "reducer", action = "get", id = RouteParameter.Optional }
             );
         }
     }
